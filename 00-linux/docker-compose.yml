@@ -1,0 +1,11 @@
+
+services:
+  linux:
+    build:
+      context: . 
+    container_name: linux
+    ports:
+      - "2222:22"
+    volumes:
+      - ./scripts:/workspace/scripts
+      - ./data:/workspace/data
