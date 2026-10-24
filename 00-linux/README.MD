@@ -24,5 +24,8 @@ ssh-keygen -t ed25519 -f ./lab_key
 ```bash
 docker-compose up -d --build
 
+# ssh-keygen -R [localhost]:2222 
+# SH to forget the old container's identity: 
+
 ssh -i ./lab_key devops@localhost -p 2222
 ```
