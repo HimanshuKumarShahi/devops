@@ -22,6 +22,8 @@ RUN mkdir -p /var/run/sshd
 
 RUN useradd -rm -d /home/devops -s /bin/bash -g root -G sudo devops
 
+RUN echo "devops:ubuntu123" | chpasswd
+
 RUN mkdir -p /home/devops/.ssh
 
 COPY lab_key.pub /home/devops/.ssh/authorized_keys
