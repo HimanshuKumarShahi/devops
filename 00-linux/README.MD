@@ -36,3 +36,11 @@ ssh -i ./lab_key devops@localhost -p 2222
  sudo su -test
 ```
 then use Exit 
+
+sudo: Borrow admin privileges so you don't have to type the test user's password.
+
+su: Switch User.
+
+-: This hyphen tells Linux to completely load the new user's environment, dropping you directly into their home folder just like a fresh login.
+
+test: The exact username you want to become.
