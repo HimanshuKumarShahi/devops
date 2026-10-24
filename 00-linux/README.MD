@@ -29,3 +29,10 @@ docker-compose up -d --build
 
 ssh -i ./lab_key devops@localhost -p 2222
 ```
+# for change the  roles then 
+```bash
+ sudo ls -la /home/test/ 
+
+ sudo su -test
+```
+then use Exit 
