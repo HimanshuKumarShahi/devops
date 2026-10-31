@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     openssh-server \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /var/run/sshd
+RUN mkdir -p /var/run/sshd && ssh-keygen -A
 
 
 RUN useradd -rm -d /home/devops -s /bin/bash -g root -G sudo devops
@@ -32,8 +32,14 @@ RUN chown -R devops:root /home/devops/.ssh \
     && chmod 700 /home/devops/.ssh \
     && chmod 600 /home/devops/.ssh/authorized_keys
 
-RUN sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+
+RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config \
+    && sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+
 
 WORKDIR /workspace
+RUN chown -R devops:root /workspace
+
+EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
